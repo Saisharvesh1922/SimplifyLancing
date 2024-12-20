@@ -4,52 +4,54 @@ const path = require('path');
 const nodemailer = require('nodemailer');
 require('dotenv').config();
 
-
 const app = express();
 const PORT = 3000;
 
 const transporter = nodemailer.createTransport({
-    secure:true,
+    secure: true,
     host: 'smtp.gmail.com',
     port: 465,
-    auth:{
+    auth: {
         user: process.env.USER,
         pass: process.env.PASS
     }
 });
 
-function sendMail(to,sub,msg){
+function sendMail(to, sub, msg) {
     transporter.sendMail({
-        to:to,
-        subject:sub,
-        html:msg
+        to: to,
+        subject: sub,
+        html: msg
     });
 }
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static('public'));
 
-app.get('/', (req, res) => 
+app.get('/', (req, res) =>
     res.sendFile(path.join(__dirname, 'index.html'))
 );
 
 app.get('/quoteSent', (req, res) => {
-    var name = req.query.name;
-    var email = req.query.email;
-    var phone = req.query.phone;
-    var business = req.query.business;
-    var requirements = req.query.requirements;
-    var statement = `Name: ${name} \n
+    const { name, email, phone, business, requirements } = req.query;
+    const statement = `Name: ${name} \n
              Email: ${email} \n
              Phone no: ${phone} \n
              Business name: ${business} \n
              Requirements: ${requirements}`;
 
-    sendMail(process.env.TO_USER,"New Client Alert!!!",statement),
-    res.redirect('/')
+    sendMail(process.env.TO_USER, "New Client Alert!!!", statement);
+    
+    // Send an HTML response with a client-side alert
+    res.send(`
+        <script>
+            alert('Submitted, Our team will reach out to you shortly');
+            window.location.href = '/';
+        </script>
+    `);
 });
 
-app.listen(PORT, () => 
+app.listen(PORT, () =>
     console.log(`Example app listening on port ${PORT}!`)
 );
 
