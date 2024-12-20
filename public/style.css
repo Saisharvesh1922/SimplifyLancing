@@ -3,7 +3,18 @@ body{
 }
 #main-pg{
     background-color: rgb(31, 31, 31);
-    height: 700px;
+    height: 750px;
+}
+
+.img-box{
+  margin-top: 0px;
+}
+.img{
+  padding-left: 40px;
+}
+
+.about-image-col{
+  padding-right: 22px;
 }
 /* navbar */
 .navbar-brand{
@@ -334,7 +345,9 @@ svg path {
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Add shadow effect */
     transition: transform 0.3s, box-shadow 0.3s;
   }
-
+  .modal-body{
+    text-align: left;
+  }
 
   /*submit form*/
   
@@ -406,7 +419,9 @@ svg path {
     box-shadow: rgb(31, 31, 31);
   }
   
-
+.portfolio-section-a{
+  content-visibility: hidden;
+}
 
 
 
@@ -449,6 +464,10 @@ svg path {
     .navbar{
       margin-bottom: 30px;
         padding-left: 12px;
+        height: 100px;
+    }
+    .align-items-center{
+      margin-bottom: 100px;
     }
     .navbar-brand {
         margin: 15px; /* Even smaller margin for small screens */
@@ -509,6 +528,7 @@ svg path {
       flex-direction: column;
       gap: 15px;
     }
+    
 }
 
 
@@ -553,4 +573,93 @@ svg path {
   .footer-logo {
     margin-bottom: 15px;
   }
+}
+
+.whatsapp-widget {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 60px;
+  height: 60px;
+  z-index:2;
+}
+
+.whatsapp-widget a img {
+  width: 90%;
+  height: auto;
+  border-radius: 50%;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.whatsapp-widget a img:hover {
+  transform: scale(1.1);
+}
+
+.portfolio-section {
+  padding-top: 50px;
+  text-align: center;
+}
+
+.portfolio-title {
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  color: #000000;
+  text-align: left;
+  font-size: 70px;
+  line-height: 0.8;
+  font-size: xxx-large;
+}
+
+.carousel .row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.carousel-item img {
+  max-height: 450px;
+  object-fit: cover;
+  cursor: pointer;
+}
+
+/* Media Query for Mobile View */
+@media (max-width: 767.98px) {
+  .carousel-item .row {
+    flex-direction: column;
+  }
+
+  .carousel-item .col-12 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .portfolio-section{
+    content-visibility: hidden;
+  }
+  .portfolio-section-a{
+    content-visibility: visible;
+  }
+  .carousel-item img {
+    max-height: 550px;
+    object-fit: cover;
+    cursor: pointer;
+  }
+}
+
+.ad-videos-title {
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  color: #555;
+  font-size: 1.8rem;
+}
+
+.video-wrapper video {
+  padding: 0% 12% 0% 12%;
+  max-height: 450px;
+  object-fit: cover;
+  box-shadow: 0 4px 6px rgba(255, 255, 255, 0.1);
 }
